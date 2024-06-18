@@ -18,22 +18,22 @@ lint:
     @eslint --ext .ts .
 
 types:
-    tsc --noEmit \
+    @tsc --noEmit \
         --project \
         ./tsconfig.json
 
 test:
-    vitest
+    @vitest
 
 build:
-    tsup \
+    @tsup \
         --dts \
         --cjsInterop
 
-    attw --pack
+    @attw --pack
 
 docs:
-    typedoc \
+    @typedoc \
         --plugin typedoc-plugin-markdown \
         --tsconfig ./tsconfig.lib.json \
         --out dist/docs \
@@ -46,9 +46,9 @@ docs:
             --hidePageTitle true \
             --hideGenerator true
 
-    inject-markdown ./README.md
+    @inject-markdown ./README.md
 
-    rm -rf dist/docs
+    @rm -rf dist/docs
 
 publish STAGE="":
     #!/bin/bash
