@@ -1,0 +1,17 @@
+{
+  "name": "@zenobius/remark-nomnoml",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "remark",
+    "plugin",
+    "nomnoml",
+    "diagram"
+  ],
+  "author": {
+    "name": "Zenobius Jiricek",
+    "email": "airtonix@users.noreply.github.com"
+  }
+}
