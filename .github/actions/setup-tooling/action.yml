@@ -39,10 +39,10 @@ runs:
       shell: bash
       id: cache
       run: |
-        if [ "${{ env.ACT }}" = "true" ]; then 
+        if [ "${{ env.ACT }}" = "true" ]; then
           echo "OFFLINE: no cache"
           echo "cache-hit=false" >> $GITHUB_OUTPUT
-        elif [ "${{ steps.online-asdf-cache.outputs.cache-hit }}" = "true" ]; then 
+        elif [ "${{ steps.online-asdf-cache.outputs.cache-hit }}" = "true" ]; then
           echo "ONLINE: cache available"
           echo "cache-hit=${{ steps.online-asdf-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
         fi

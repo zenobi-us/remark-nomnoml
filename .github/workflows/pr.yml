@@ -31,10 +31,10 @@ jobs:
         run: just lint
 
       - name: test
-        run: just test
+        run: |
+          just unittest
+          just build
+          just integrationtest
 
       - name: docs
         run: just docs
-
-      - name: build
-        run: just build

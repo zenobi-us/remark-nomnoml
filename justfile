@@ -18,22 +18,25 @@ lint:
     @eslint --ext .ts .
 
 types:
-    tsc --noEmit \
+    @tsc --noEmit \
         --project \
         ./tsconfig.json
 
-test:
-    vitest
+unittest:
+    @vitest --dir ./src
+
+integrationtest:
+    tsx e2e/produces-rendered-svg.test.ts
 
 build:
-    tsup \
+    @tsup \
         --dts \
         --cjsInterop
 
-    attw --pack
+    @attw --pack
 
 docs:
-    typedoc \
+    @typedoc \
         --plugin typedoc-plugin-markdown \
         --tsconfig ./tsconfig.lib.json \
         --out dist/docs \
@@ -46,22 +49,10 @@ docs:
             --hidePageTitle true \
             --hideGenerator true
 
-    inject-markdown ./README.md
+    @inject-markdown ./README.md
 
-    rm -rf dist/docs
+    @rm -rf dist/docs
 
-publish STAGE="":
-    #!/bin/bash
-    set -e
-
-    local tag
-    case $(STAGE) in
-        prod)
-            tag=latest
-            ;;
-        *)
-            tag=next
-            ;;
-    esac
-
-    npm publish --access public --tag "${tag}"
+publish TAG="next":
+    yarn npm publish \
+        --tag "{{TAG}}"

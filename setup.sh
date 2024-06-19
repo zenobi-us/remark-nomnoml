@@ -60,9 +60,7 @@ log() {
 }
 
 info() {
-  echo ""
   log info "$@"
-  echo ""
 }
 
 warn() {
@@ -81,6 +79,22 @@ error() {
   echo ""
   log error "$@"
   echo ""
+}
+
+group() {
+  # if CI is detected, use the group command
+  if [[ -n "${CI}" ]]; then
+    echo "::group::$*"
+  else
+    log cyan "$*"
+  fi
+}
+
+groupend() {
+  # if CI is detected, use the groupend command
+  if [[ -n "${CI}" ]]; then
+    echo "::endgroup::"
+  fi
 }
 
 does_command_exist() {
@@ -117,13 +131,20 @@ add_to_shell_profile() {
   local profile
 
   profile=$(get_shell_profile)
-  info "Adding to shell profile"
+  group "Adding to shell profile"
+
   append_uniquely "$profile" ". $ASDF_HOME/asdf.sh"
   append_uniquely "$profile" ". $ASDF_HOME/completions/asdf.bash"
+
+  groupend
 }
 
 install_asdf() {
-  info "Installing/Updating ASDF"
+  group "Installing/Updating ASDF"
+
+  # does "$ASDF_BIN" exist? then run it
+  # shellcheck disable=SC1090
+  [[ -f "$ASDF_BIN" ]] && source "$ASDF_BIN"
 
   does_command_exist asdf || {
     warn "ASDF not detected ... installing"
@@ -133,45 +154,60 @@ install_asdf() {
     does_command_exist asdf || add_to_shell_profile
   }
 
-  info "Updating asdf..."
+  groupend
+
+  group "Updating asdf..."
   # shellcheck disable=SC1090
   source "$ASDF_BIN"
 
   asdf update || true
+
+  groupend
 }
 
-patch_asdf_plugin_manager() {
-  local location
+perform_patch() {
+  local target
+  local source
 
-  location="$1"
-  info "Patching > ${location}"
-  patch -p1 "${location}" "./asdf-plugin-manager.patch"
+  target="$1"
+  source="$2"
 
-  success "Patched ASDF Plugin Manager"
+  info "Patching ${source} > ${target}"
+
+  patch \
+    --forward \
+    --silent \
+    --strip=1 \
+    "$target" "$source"
 }
 
 install_asdf_plugin_manager() {
-  info "Installing ASDF Plugin Manager ${ASDF_PLUGIN_MANAGER_VERSION}"
-
+  group "Installing ASDF Plugin Manager ${ASDF_PLUGIN_MANAGER_VERSION}"
   asdf plugin add asdf-plugin-manager https://github.com/asdf-community/asdf-plugin-manager.git
   asdf plugin update asdf-plugin-manager "v${ASDF_PLUGIN_MANAGER_VERSION}"
+  asdf uninstall asdf-plugin-manager
   asdf install asdf-plugin-manager "${ASDF_PLUGIN_MANAGER_VERSION}"
   asdf global asdf-plugin-manager "${ASDF_PLUGIN_MANAGER_VERSION}"
-  asdf reshim
+  perform_patch "$ASDF_HOME/plugins/asdf-plugin-manager/cli/asdf-plugin-manager.sh" "./asdf-plugin-manager.patch"
+  perform_patch "$ASDF_HOME/installs/asdf-plugin-manager/${ASDF_PLUGIN_MANAGER_VERSION}/bin/asdf-plugin-manager" "./asdf-plugin-manager.patch"
+  groupend
 
-  info "Patching ASDF Plugin Manager"
-  patch_asdf_plugin_manager "$ASDF_HOME/plugins/asdf-plugin-manager/cli/asdf-plugin-manager.sh"
-  patch_asdf_plugin_manager "$ASDF_HOME/installs/asdf-plugin-manager/${ASDF_PLUGIN_MANAGER_VERSION}/bin/asdf-plugin-manager"
-
-  info "Installing .plugin-versions"
+  group "Installing .plugin-versions"
   asdf-plugin-manager add-all
+  groupend
 }
 
 install_asdf_tooling() {
-  info "Installing .tool-versions"
-
+  group "Installing .tool-versions"
   asdf install
   asdf reshim
+  groupend
+}
+
+show_asdf_bom() {
+  group "ASDF BOM"
+  asdf current
+  groupend
 }
 
 require_command git
@@ -180,5 +216,6 @@ require_command curl
 install_asdf
 install_asdf_plugin_manager
 install_asdf_tooling
+show_asdf_bom
 
 info "Done"

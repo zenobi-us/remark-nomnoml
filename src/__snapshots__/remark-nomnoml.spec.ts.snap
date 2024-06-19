@@ -1,0 +1,99 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`render nomnoml diagram: 'class diagram' 1`] = `
+"<svg version="1.1" baseProfile="full" width="226.5" height="157.0" viewbox="0 0 226.5 157" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<desc >[&lt;frame&gt;Decorator pattern|Component||+ operation()]</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="normal" font-style="normal">
+		<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+			<g stroke="transparent" fill="transparent">
+				<rect x="0.0" y="0.0" height="157.0" width="226.5" stroke="none"></rect>
+			</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+				<g transform="translate(20, 20)">
+					<g data-name="Decorator pattern">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Decorator pattern">
+							<rect x="0.0" y="0.0" height="101.0" width="170.5" data-name="Decorator pattern"></rect>
+							<path d="M0.0 31.0 L147.3 31.0 L162.8 15.5 L162.8 0.0" fill="none" data-name="Decorator pattern"></path>
+							<path d="M0.0 62.0 L170.5 62.0" fill="none" data-name="Decorator pattern"></path>
+							<path d="M0.0 70.0 L170.5 70.0" fill="none" data-name="Decorator pattern"></path>
+						</g>
+						<g transform="translate(0, 0)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">Decorator pattern</text>
+								
+							</g>
+						</g>
+						<g transform="translate(0, 31)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">Component</text>
+								
+							</g>
+						</g>
+						<g transform="translate(0, 62)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Decorator pattern">
+								
+							</g>
+						</g>
+						<g transform="translate(0, 70)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">+ operation()</text>
+								
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
+"
+`;
+
+exports[`render nomnoml diagram: 'simple' 1`] = `
+"<svg version="1.1" baseProfile="full" width="226.5" height="157.0" viewbox="0 0 226.5 157" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<desc >[&lt;frame&gt;Decorator pattern|Component||+ operation()]</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="normal" font-style="normal">
+		<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+			<g stroke="transparent" fill="transparent">
+				<rect x="0.0" y="0.0" height="157.0" width="226.5" stroke="none"></rect>
+			</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+				<g transform="translate(20, 20)">
+					<g data-name="Decorator pattern">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Decorator pattern">
+							<rect x="0.0" y="0.0" height="101.0" width="170.5" data-name="Decorator pattern"></rect>
+							<path d="M0.0 31.0 L147.3 31.0 L162.8 15.5 L162.8 0.0" fill="none" data-name="Decorator pattern"></path>
+							<path d="M0.0 62.0 L170.5 62.0" fill="none" data-name="Decorator pattern"></path>
+							<path d="M0.0 70.0 L170.5 70.0" fill="none" data-name="Decorator pattern"></path>
+						</g>
+						<g transform="translate(0, 0)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">Decorator pattern</text>
+								
+							</g>
+						</g>
+						<g transform="translate(0, 31)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">Component</text>
+								
+							</g>
+						</g>
+						<g transform="translate(0, 62)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Decorator pattern">
+								
+							</g>
+						</g>
+						<g transform="translate(0, 70)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Decorator pattern">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Decorator pattern">
+								<text x="0.0" y="13.5" stroke="none" data-name="Decorator pattern">+ operation()</text>
+								
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
+"
+`;

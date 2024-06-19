@@ -53,25 +53,15 @@ jobs:
       - name: Yarn
         uses: ./.github/actions/setup-yarn
 
-      - name: Configure Publishing
-        uses: ./.github/actions/setup-npm-publish
-        with:
-          NpmRegistryUrl: https://registry.npmjs.org/
-          NpmRcFile: .npmrc
-
       - name: Preflight
         run: |
           just lint
           just types
-          just test
+          just unittest
           just build
+          just integrationtest
 
       - if: ${{ needs.Process.outputs.releases_created == 'true' }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: just stage=production publish
-
-      - if: ${{ needs.Process.outputs.prs_created == 'true' }}
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: just stage=development publish
+        run: just publish

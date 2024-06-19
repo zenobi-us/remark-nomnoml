@@ -16,6 +16,8 @@ fi
 domain="${1//http:\/\//}"
 domain="${domain//https:\/\//}"
 
-echo "//${domain}/:_authToken=\${NPM_AUTH_TOKEN}" >"$2"
-echo "registry=${1}" >>"$2"
-echo "always-auth=true" >>"$2"
+echo """
+//${domain}/:_authToken=\${NPM_AUTH_TOKEN}
+registry=${1}
+always-auth=true
+""" >>"$2"
