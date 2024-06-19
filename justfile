@@ -23,7 +23,7 @@ types:
         ./tsconfig.json
 
 unittest:
-    @vitest
+    @vitest --dir ./src
 
 integrationtest:
     tsx e2e/produces-rendered-svg.test.ts
