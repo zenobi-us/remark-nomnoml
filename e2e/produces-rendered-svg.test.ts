@@ -2,10 +2,11 @@ import puppeteer from 'puppeteer';
 import fs from 'fs/promises';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import { remarkNomnoml } from '../dist/remark-nomnoml';
 import remarkStringify from 'remark-stringify';
 import http from 'node:http';
 import open from 'open';
+import { remarkNomnoml } from '../dist/remark-nomnoml';
+import isCi from 'is-ci';
 
 const processor = unified()
   .use(remarkParse)
@@ -32,6 +33,9 @@ http
   .listen(3000, async () => {
     console.log('Server listening on http://localhost:3000');
     await test();
+    if (!isCi) {
+      await open('http://localhost:3000');
+    }
     process.exit(0);
   });
 
