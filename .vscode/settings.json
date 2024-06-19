@@ -30,12 +30,6 @@
       "mode": "auto"
     }
   ],
-  "jest.runMode": {
-    "type": "on-demand",
-    "runAllTestsOnStartup": false,
-    "coverage": false,
-    "deferred": true
-  },
   "testing.openTesting": "neverOpen",
   "debug.showInStatusBar": "always",
   "typescript.tsdk": "node_modules/typescript/lib",

@@ -16,6 +16,12 @@
     {
       "files": ["*.ts"],
       "rules": {
+        "sort-imports": [
+          "error",
+          {
+            "memberSyntaxSortOrder": ["none"]
+          }
+        ],
         "no-nested-ternary": "error",
         "import/no-default-export": "error",
         "curly": "error",
@@ -32,6 +38,8 @@
             }
           }
         ],
+        "import/first": "error",
+        "import/group-exports": "error",
         "import/order": [
           "error",
           {
