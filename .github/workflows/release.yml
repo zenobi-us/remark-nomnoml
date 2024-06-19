@@ -63,8 +63,9 @@ jobs:
         run: |
           just lint
           just types
-          just test
+          just unittest
           just build
+          just integrationtest
 
       - if: ${{ needs.Process.outputs.releases_created == 'true' }}
         env:

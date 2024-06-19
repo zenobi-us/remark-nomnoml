@@ -22,8 +22,11 @@ types:
         --project \
         ./tsconfig.json
 
-test:
+unittest:
     @vitest
+
+integrationtest:
+    tsx e2e/produces-rendered-svg.test.ts
 
 build:
     @tsup \
