@@ -5,8 +5,9 @@ import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import http from 'node:http';
 import open from 'open';
-import { remarkNomnoml } from '../dist/remark-nomnoml';
 import isCi from 'is-ci';
+
+import { remarkNomnoml } from '../dist/remark-nomnoml';
 
 const processor = unified()
   .use(remarkParse)
