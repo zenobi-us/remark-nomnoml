@@ -127,7 +127,7 @@ const remarkNomnoml: Plugin<[RemarkNomNomlOptions?], Root> = (options) => {
         ancestors,
       });
       message.fatal = true;
-      message.url = 'https://zenobi.us/p/posts/2024-02-28-remark-nomnoml';
+      message.url = 'https://zenobi.us/b/2024-02-28-remark-nomnoml';
       throw message;
     }
 
