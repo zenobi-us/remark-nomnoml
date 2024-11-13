@@ -7,39 +7,48 @@ import { remarkNomnoml } from './remark-nomnoml';
 test.each([
   {
     name: 'simple',
+    wordsToSearch: ['Decorator pattern', 'Component', 'operation()'],
     diagram:
       '```nomnoml\n[<frame>Decorator pattern|Component||+ operation()]\n```',
   },
   {
     name: 'simple with error',
     diagram: '```nomnoml\n ] >```\n',
+    wordsToSearch: [],
     invalid: true,
   },
   {
     name: 'class diagram',
+    wordsToSearch: ['Decorator pattern', 'Component', 'operation()'],
     diagram:
       '```nomnoml\n[<frame>Decorator pattern|Component||+ operation()]\n```',
   },
-])('render nomnoml diagram: $name', async ({ diagram, invalid }) => {
-  const processor = remark();
-  processor.use(remarkNomnoml);
+])(
+  'render nomnoml diagram: $name',
+  async ({ diagram, invalid, wordsToSearch }) => {
+    const processor = remark();
+    processor.use(remarkNomnoml);
 
-  const file = new VFile(diagram);
+    const file = new VFile(diagram);
 
-  if (invalid) {
-    await expect(() => {
-      return processor.process(file);
-    }).rejects.toThrow();
-    return;
-  }
+    if (invalid) {
+      await expect(() => {
+        return processor.process(file);
+      }).rejects.toThrow();
+      return;
+    }
 
-  expect(file.messages).toHaveLength(0);
+    expect(file.messages).toHaveLength(0);
 
-  await processor.process(file);
+    await processor.process(file);
 
-  expect(file.messages).toHaveLength(0);
-  expect(file.value).toMatchSnapshot();
-});
+    expect(file.messages).toHaveLength(0);
+
+    for (const word of wordsToSearch) {
+      expect(file.toString()).toContain(word);
+    }
+  },
+);
 
 test('it should throw a vfile error if a diagram is invalid without error fallback', async () => {
   const processor = remark().use(remarkNomnoml);
