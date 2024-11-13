@@ -5,6 +5,7 @@ export default defineConfig((options) => {
     name: 'remark-nomnoml',
 
     shims: true,
+    format: ['cjs', 'esm'],
 
     entry: ['src/remark-nomnoml.ts'],
 

@@ -52,7 +52,7 @@
   "types": "./dist/remark-nomnoml.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/remark-nomnoml.js",
+      "import": "./dist/remark-nomnoml.mjs",
       "require": "./dist/remark-nomnoml.js",
       "types": "./dist/remark-nomnoml.d.ts"
     }
