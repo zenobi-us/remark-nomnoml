@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/zenobi-us/remark-nomnoml/compare/v0.0.3...v0.0.4) (2024-11-13)
+
+
+### Bug Fixes
+
+* provide an esm build ([#10](https://github.com/zenobi-us/remark-nomnoml/issues/10)) ([9e19df8](https://github.com/zenobi-us/remark-nomnoml/commit/9e19df8005378588bf44ac2293f19f8969892a22))
+
 ## [0.0.3](https://github.com/zenobi-us/remark-nomnoml/compare/v0.0.2...v0.0.3) (2024-11-13)
 
 
