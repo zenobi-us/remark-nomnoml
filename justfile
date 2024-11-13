@@ -56,3 +56,19 @@ docs:
 publish TAG="next":
     yarn npm publish \
         --tag "{{TAG}}"
+
+release TAG="":
+    #!/bin/bash
+    args=()
+    tag="{{TAG}}"
+
+    # if tag is provided then use arg --release-as
+    if [ -n "$tag" ]; then
+        args+=(--release-as "$tag")
+    fi
+
+    release-please release-pr \
+        --token $(gh auth token) \
+        --defaultBranch master \
+        --repo-url $(git remote get-url origin) \
+        "${args[@]}"
