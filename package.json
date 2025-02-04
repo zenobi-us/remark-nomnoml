@@ -46,7 +46,7 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.13.1",
     "vite": "^5.3.6",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.1"
   },
   "main": "./dist/remark-nomnoml.js",
   "types": "./dist/remark-nomnoml.d.ts",
